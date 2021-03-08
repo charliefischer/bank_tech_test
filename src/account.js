@@ -1,10 +1,14 @@
 class Account {
   constructor(){
-    this.balance = 0
+    this._balance = 0
+  }
+
+  balance() {
+    return this._balance
   }
 
   deposit(amount) {
-    return "New balance: £" + amount.toFixed(2)
+    return "New balance: £" + (this._balance += amount).toFixed(2)
   }
 }
 
