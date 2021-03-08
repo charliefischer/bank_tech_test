@@ -1,3 +1,5 @@
+// import Transaction from './transaction'
+
 class Account {
     #balance = 0
     #transactions = []
@@ -10,30 +12,30 @@ class Account {
     return this.#transactions
   }
 
+  get printStatement() {
+    return this.#printAllTransactions()
+  }
+
   deposit(amount) {
     (this.#balance += amount).toFixed(2)
-    this.transactions.push({
-      date: this.#simplifiedDate(),
-      type: 'credit',
-      amount: amount.toFixed(2),
-      balance: this.balance
-    })
+
+    this.transactions.push(
+      new Transaction('debit', amount, this.#balance, this.#simplifiedDate())
+    )
     return "New balance: £" + this.balance.toFixed(2)
   }
 
   withdraw(amount) {
     if (this.#balance - amount < 0) throw new Error('Insufficient funds');
-
+    
     (this.#balance -= amount).toFixed(2)
-    this.transactions.push({
-      date: this.#simplifiedDate(),
-      type: 'debit',
-      amount: amount.toFixed(2),
-      balance: this.balance
-    })
-
+    this.transactions.push(
+      new Transaction('credit', amount, this.#balance, this.#simplifiedDate())
+    )
     return "New balance: £" + this.balance.toFixed(2)
   }
+
+  // private methods below
   
   #printAllTransactions() {
     let str = 'date || credit || debit || balance'
@@ -45,16 +47,25 @@ class Account {
       } 
     } return str
   }
-
-  get printStatement() {
-    return this.#printAllTransactions()
-  }
-
   #simplifiedDate() {
     let date = new Date()
     return date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear()
   }
+
+}
+
+class Transaction {
+  constructor(type, amount, balance, date){
+    this.date = date
+    this.type = type 
+    this.amount = amount 
+    this.balance = balance
+  }
+  
+  showDate() {
+    return this.date
+  }
 }
 
 
-module.exports = Account
+// export.modules =  Account
