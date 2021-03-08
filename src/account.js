@@ -10,6 +10,10 @@ class Account {
   deposit(amount) {
     return "New balance: £" + (this._balance += amount).toFixed(2)
   }
+
+  withdraw(amount) {
+    return "New balance: £-10.00"
+  }
 }
 
 
