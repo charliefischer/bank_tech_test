@@ -4,7 +4,7 @@ class Account {
   }
 
   deposit(amount) {
-    return `New balance: £10.00`
+    return "New balance: £" + amount.toFixed(2)
   }
 }
 
