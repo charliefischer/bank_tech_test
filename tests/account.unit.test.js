@@ -1,4 +1,5 @@
 const Account = require('../src/account')
+// const simplifiedDate = require('./helpers')
 let account;
 
 beforeEach(() => {
@@ -11,9 +12,10 @@ simplifiedDate = () => {
 }
 
 describe('simplified date', () => {
-  test('returns todays date', () => {
-    expect(account._simplifiedDate()).toBe(simplifiedDate())
-  })
+  test('returns todays date within the transactions', () => {
+    account.deposit(1)
+    expect(account.transactions[0].date).toBe(simplifiedDate())
+    })
 })
 
 describe('balance', () => {
