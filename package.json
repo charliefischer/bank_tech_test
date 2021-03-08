@@ -4,7 +4,8 @@
   "description": "## Specification ### Requirements - You should be able to interact witih your code via the JS concole - Deposits - Withdrawals - Account statement (data, amount, balance) printing - Data is stored in memory (not in a database)",
   "main": "index.js",
   "scripts": {
-    "test": "jest --coverage"
+    "test": "jest --coverage",
+    "lint": "eslint ./"
   },
   "repository": {
     "type": "git",
