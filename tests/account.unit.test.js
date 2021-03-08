@@ -24,6 +24,19 @@ describe('deposit', () => {
 
 describe('withdraw', () => {
   test('you can make withdrawals', () => {
-    expect(account.withdraw(10)).toEqual('New balance: £-10.00')
+    account.deposit(10)
+    expect(account.withdraw(10)).toEqual('New balance: £0.00')
+  })
+
+  test('you can make multiple withdrawals', () => {
+    account.deposit(100)
+    account.withdraw(10)
+    expect(account.withdraw(10)).toEqual('New balance: £80.00')
+  })
+
+  test('you can not withdraw more money than you have', () => {
+    expect(() => {
+      account.withdraw(10)
+    }).toThrow('Insufficient funds')
   })
 })

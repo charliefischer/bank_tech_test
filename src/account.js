@@ -12,7 +12,8 @@ class Account {
   }
 
   withdraw(amount) {
-    return "New balance: £-10.00"
+    if (this._balance - amount < 0) throw new Error('Insufficient funds')
+    return "New balance: £" + (this._balance -= amount).toFixed(2)
   }
 }
 
