@@ -55,3 +55,20 @@ date || credit || debit || balance
 10/01/2012 || 1000.00 || || 1000.00
 ```
 
+## Planning
+#### Transactions
+Transactions should produce a hash that contains the information about:
+- the date
+- whether it is credit or debit
+- the amount
+- the balance at the time
+
+e.g 
+```
+account.deposit(500)
+account.transactions
+=> [{date: 01/01/2000, type: credit, amount: 500, balance: 500}]
+```
+This will make it easier down the line to pull out the information for the statement
+
+
