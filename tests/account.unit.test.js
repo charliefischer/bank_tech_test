@@ -5,6 +5,17 @@ beforeEach(() => {
   account = new Account();
 })
 
+simplifiedDate = () => {
+  let date = new Date()
+  return date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear()
+}
+
+describe('simplified date', () => {
+  test('returns todays date', () => {
+    expect(account.simplifiedDate()).toBe(simplifiedDate())
+  })
+})
+
 describe('balance', () => {
   test('has an initial balance of 0', () => {
     expect(account.balance).toEqual(0)
@@ -46,13 +57,24 @@ describe('transactions', () => {
     expect(account.transactions).toStrictEqual([])
   })
 
-  test('the deposit amount and the date are passed into transactions', () => {
+  test('the deposit amount,date and balance are passed into transactions', () => {
     account.deposit(10)
     expect(account.transactions).toStrictEqual([{
-      date: new Date(),
+      date: simplifiedDate(),
       type: 'credit',
       amount: 10, 
       balance: 10
     }])
+  })
+
+  test('the withdrawn amount, date and balance are passed into transactions', () => {
+    account.deposit(10)
+    account.withdraw(5)
+    expect(account.transactions[1]).toStrictEqual({
+      date: simplifiedDate(),
+      type: 'debit',
+      amount: 5,
+      balance: 5
+    })
   })
 })
