@@ -4,11 +4,6 @@ class Account {
     this._transactions = []
   }
 
-  simplifiedDate() {
-    let date = new Date()
-    return date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear()
-  }
-
   get balance() {
     return this._balance
   }
@@ -19,11 +14,10 @@ class Account {
 
   deposit(amount) {
     (this._balance += amount).toFixed(2)
-
     this.transactions.push({
-      date: this.simplifiedDate(),
+      date: this._simplifiedDate(),
       type: 'credit',
-      amount: amount,
+      amount: amount.toFixed(2),
       balance: this.balance
     })
     return "New balance: £" + this.balance.toFixed(2)
@@ -35,13 +29,33 @@ class Account {
     (this._balance -= amount).toFixed(2)
 
     this.transactions.push({
-      date: this.simplifiedDate(),
+      date: this._simplifiedDate(),
       type: 'debit',
-      amount: amount,
+      amount: amount.toFixed(2),
       balance: this.balance
     })
 
     return "New balance: £" + this.balance.toFixed(2)
+  }
+  
+  _printAllTransactions() {
+    let str = 'date || credit || debit || balance'
+    for(let i = this.transactions.length - 1; i >= 0; i--) {
+      if(this.transactions[i].type === 'credit') {
+        str += '\n' + this.transactions[i].date + ' || ' + this.transactions[i].amount + ' || || ' + this.transactions[i].balance.toFixed(2)
+      } else {
+        str += '\n' + this.transactions[i].date + ' || || ' + this.transactions[i].amount + ' || ' + this.transactions[i].balance.toFixed(2)
+      } 
+    } return str
+  }
+
+  get printStatement() {
+    return this._printAllTransactions()
+  }
+
+  _simplifiedDate() {
+    let date = new Date()
+    return date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear()
   }
 }
 
