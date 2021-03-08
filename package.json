@@ -1,0 +1,23 @@
+{
+  "name": "bank_tech_test",
+  "version": "1.0.0",
+  "description": "## Specification ### Requirements - You should be able to interact witih your code via the JS concole - Deposits - Withdrawals - Account statement (data, amount, balance) printing - Data is stored in memory (not in a database)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/charliefischer/bank_tech_test.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/charliefischer/bank_tech_test/issues"
+  },
+  "homepage": "https://github.com/charliefischer/bank_tech_test#readme",
+  "devDependencies": {
+    "jest": "^26.6.3"
+  }
+}
