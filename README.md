@@ -27,17 +27,17 @@ You should see 100% of tests passed with 100% coverage.
 
 ## User Stories
 ```
-As a bank user
-So I can keep money in my bank
+As a customer
+So I can save money in my bank
 I'd like to be able to deposit money into my account
 ```
 ```
-As a bank user
+As a customer
 So I can take my money out of my account
 I'd like to be able to make withdrawals from my account
 ```
 ```
-As a bank user
+As a customer
 So I can keep track of my money in my account
 I'd like to be able to view a statement that shows the deposits, withdrawals, the dates of them and the balance
 ```
@@ -56,6 +56,15 @@ date || credit || debit || balance
 ```
 
 ## Planning
+#### Date
+Date should be shown as the acceptance criteria above.
+So today the date is 8th March 2021 and so should be shown as
+```8/3/2021```
+
+#### Amount
+The amount deposited or withdrawn should be specified with 2 decimal places and saved as a type and amount to make printing the statements easier down the line
+```type: 'debit', amount: 6000```
+
 #### Transactions
 Transactions should produce a hash that contains the information about:
 - the date
@@ -70,5 +79,15 @@ account.transactions
 => [{date: 01/01/2000, type: credit, amount: 500, balance: 500}]
 ```
 This will make it easier down the line to pull out the information for the statement
+
+#### User Interface
+The app is only designed to be used in the terminal or console.log so I'd like to add a way of hinting to users what to input so they know how to use the banking app
+```
+Welcome to your account.
+To deposit money => myAccount.deposit(enter the amount here)
+To withdraw money => myAccount.deposit(enter the amount here)
+To view your statement => myAccount.printStatement
+To exit => cmd + c
+```
 
 
