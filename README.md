@@ -16,6 +16,14 @@ First, clone this repo. Then:
 > 
 ```
 
+## How to run tests
+
+In the command line, run:
+```
+npm run test
+```
+
+You should see 100% of tests passed with 100% coverage.
 
 ## User Stories
 ```

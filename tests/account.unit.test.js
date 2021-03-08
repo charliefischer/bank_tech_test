@@ -7,7 +7,7 @@ beforeEach(() => {
 
 describe('balance', () => {
   test('has an initial balance of 0', () => {
-    expect(account.balance()).toEqual(0)
+    expect(account.balance).toEqual(0)
   })
 })
 
@@ -38,5 +38,17 @@ describe('withdraw', () => {
     expect(() => {
       account.withdraw(10)
     }).toThrow('Insufficient funds')
+  })
+})
+
+describe('transactions', () => {
+  test('is an empty array initially', () => {
+    expect(account.transactions).toStrictEqual([])
+  })
+
+  test('the deposit amount and the date are passed into transactions', () => {
+    account.deposit(10)
+    expect(account.transactions).toStrictEqual([{
+      deposit: 10, date: new Date()}])
   })
 })

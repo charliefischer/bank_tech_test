@@ -1,13 +1,22 @@
 class Account {
   constructor(){
     this._balance = 0
+    this._transactions = []
   }
 
-  balance() {
+  get balance() {
     return this._balance
   }
 
+  get transactions() {
+    return this._transactions
+  }
+
   deposit(amount) {
+    this.transactions.push({
+      deposit: amount,
+      date: new Date()
+    })
     return "New balance: £" + (this._balance += amount).toFixed(2)
   }
 
