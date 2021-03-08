@@ -49,6 +49,10 @@ describe('transactions', () => {
   test('the deposit amount and the date are passed into transactions', () => {
     account.deposit(10)
     expect(account.transactions).toStrictEqual([{
-      deposit: 10, date: new Date()}])
+      date: new Date(),
+      type: 'credit',
+      amount: 10, 
+      balance: 10
+    }])
   })
 })
