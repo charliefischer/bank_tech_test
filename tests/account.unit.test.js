@@ -80,6 +80,13 @@ describe('transactions', () => {
 })
 
 describe('printStatement', () => {
+  test('returns a statement detailing the transaction', () => {
+    account.deposit(10)
+    expect(account.printStatement).toStrictEqual(
+      `date || credit || debit || balance\n${simplifiedDate()} || 10.00 || || 10.00`
+    )
+  })
+
   test('returns a statement detailing all transactions and relevant info', () => {
     account.deposit(10)
     account.deposit(10)
