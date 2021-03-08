@@ -1,19 +1,17 @@
 class Account {
-  constructor(){
-    this._balance = 0
-    this._transactions = []
-  }
+    #balance = 0
+    #transactions = []
 
   get balance() {
-    return this._balance
+    return this.#balance
   }
 
   get transactions() {
-    return this._transactions
+    return this.#transactions
   }
 
   deposit(amount) {
-    (this._balance += amount).toFixed(2)
+    (this.#balance += amount).toFixed(2)
     this.transactions.push({
       date: this._simplifiedDate(),
       type: 'credit',
@@ -24,9 +22,9 @@ class Account {
   }
 
   withdraw(amount) {
-    if (this._balance - amount < 0) throw new Error('Insufficient funds');
+    if (this.#balance - amount < 0) throw new Error('Insufficient funds');
 
-    (this._balance -= amount).toFixed(2)
+    (this.#balance -= amount).toFixed(2)
 
     this.transactions.push({
       date: this._simplifiedDate(),
