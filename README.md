@@ -27,6 +27,9 @@ npm run test
 
 You should see *100% of tests* passed with *100% coverage*.
 
+## The App
+<img src='./images/Bank_App.png'>
+
 ## User Stories
 ```
 As a customer
@@ -56,6 +59,9 @@ date || credit || debit || balance
 13/01/2012 || 2000.00 || || 3000.00
 10/01/2012 || 1000.00 || || 1000.00
 ```
+
+## My approach
+I started this task by breaking everything down into the most simple of steps and using a red green refactor process to individually solve each step. E.g. I started the deposit as a method that just passes a number into the balance and then with TDD worked it up to creating a more complex hash that passed the information into the Transactions class and stored that in a transactions array. 
 
 ## Planning
 ### Date
