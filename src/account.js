@@ -1,4 +1,3 @@
-// import Transaction from './transaction'
 const Transaction = require('../src/transaction')
 
 class Account {
@@ -7,20 +6,12 @@ class Account {
     this.transactions = []
   }
 
-  showBalance() {
-    return this.balance
-  }
-
-  showTransactions() {
-    return this.transactions
-  }
-
   get printStatement() {
     return this.#printAllTransactions()
   }
 
   deposit(amount) {
-    (this.balance += amount).toFixed(2)
+    (this.#credit(amount)).toFixed(2)
 
     this.transactions.push(
       new Transaction(
@@ -30,13 +21,13 @@ class Account {
         this.#simplifiedDate()
       )
     )
-    return "New balance: £" + this.balance.toFixed(2)
+    return this.#displayBalance()
   }
 
   withdraw(amount) {
-    if (this.balance - amount < 0) throw new Error('Insufficient funds');
+    if (this.#isInsufficientFunds(amount)) throw new Error('Insufficient funds');
     
-    (this.balance -= amount).toFixed(2)
+    (this.#debit(amount)).toFixed(2)
     this.transactions.push(
       new Transaction(
         'debit', 
@@ -45,7 +36,7 @@ class Account {
         this.#simplifiedDate()
       )
     )
-    return "New balance: £" + this.balance.toFixed(2)
+    return this.#displayBalance()
   }
 
   // private methods below
@@ -66,11 +57,31 @@ class Account {
     return date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear()
   }
 
+  #isInsufficientFunds(amount) {
+    return this.balance - amount < 0
+  }
+
+  #debit(amount){
+    return this.balance -= amount
+  }
+
+  #credit(amount) {
+   return this.balance += amount 
+  }
+
+  #displayBalance(){
+    return "New balance: £" + this.balance.toFixed(2)
+  }
+
 }
 
-
-
-account = new Account();
-
+console.log(
+  `Welcome to your account.\n
+  To deposit money => myAccount.deposit(enter the amount here)\n
+  To withdraw money => myAccount.deposit(enter the amount here)\n
+  To view your statement => myAccount.printStatement\n
+  To exit => cmd + c`
+)
+myAccount = new Account();
 
 module.exports =  Account
