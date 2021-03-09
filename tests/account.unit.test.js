@@ -31,7 +31,7 @@ describe('deposit', () => {
   test('you can make deposits that include pennies', () => {
     expect(account.deposit(0.01)).toEqual('New balance: £0.01')
   })
-  
+
   test('you can make multiple deposits', () => {
     account.deposit(10)
     expect(account.deposit(20)).toEqual('New balance: £30.00')
@@ -80,21 +80,6 @@ describe('withdraw', () => {
     }).toThrow('Please re-enter the amount as a positive integer')
   })
 })
-
-
-
-
-  test('the withdrawn amount, date and balance are passed into transactions', () => {
-    account.deposit(10)
-    account.withdraw(5)
-    expect(account.transactions.length).toEqual(2)
-    expect(account.transactions[1]).toEqual({
-      date: simplifiedDate(),
-      type: 'debit',
-      amount: 5,
-      balance: 5.00
-    })
-  })
 
 describe('printStatement', () => {
   test('returns a statement detailing the transaction', () => {
