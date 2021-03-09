@@ -11,6 +11,10 @@ class Account {
   }
 
   deposit(amount) {
+    if(!Number.isInteger(amount) || amount < 0){
+      throw new Error('Please re-enter the amount as a positive integer')
+    }
+
     (this.#credit(amount)).toFixed(2)
 
     this.transactions.push(
@@ -25,6 +29,9 @@ class Account {
   }
 
   withdraw(amount) {
+    if(!Number.isInteger(amount) || amount < 0){
+      throw new Error('Please re-enter the amount as a positive integer')
+    }
     if (this.#isInsufficientFunds(amount)) throw new Error('Insufficient funds');
     
     (this.#debit(amount)).toFixed(2)
@@ -80,7 +87,7 @@ console.log(
   To deposit money => myAccount.deposit(enter the amount here)\n
   To withdraw money => myAccount.deposit(enter the amount here)\n
   To view your statement => myAccount.printStatement\n
-  To exit => cmd + c`
+  To exit => ctrl + d`
 )
 myAccount = new Account();
 

@@ -14,9 +14,12 @@ beforeEach(() => {
   date = simplifiedDate();
 })
 
-describe('balance', () => {
+describe('initializing', () => {
   test('has an initial balance of 0', () => {
     expect(account.balance).toEqual(0)
+  })
+  test('is an empty array initially', () => {
+    expect(account.transactions).toStrictEqual([])
   })
 })
 
@@ -28,6 +31,18 @@ describe('deposit', () => {
   test('you can make multiple deposits', () => {
     account.deposit(10)
     expect(account.deposit(20)).toEqual('New balance: £30.00')
+  })
+
+  test('you can not deposit anything other than an integer', () => {
+    expect(() => {
+      account.deposit('ten')
+    }).toThrow('Please re-enter the amount as a positive integer')
+  })
+
+  test('you can not deposit a negative value', () => {
+    expect(() => {
+      account.deposit(-10)
+    }).toThrow('Please re-enter the amount as a positive integer')
   })
 })
 
@@ -48,19 +63,22 @@ describe('withdraw', () => {
       account.withdraw(10)
     }).toThrow('Insufficient funds')
   })
-})
 
-
-
-
-describe('transactions', () => {
-  test('is an empty array initially', () => {
-    expect(account.transactions).toStrictEqual([])
+  test('you can not withdraw anything other than an integer', () => {
+    expect(() => {
+      account.withdraw('ten')
+    }).toThrow('Please re-enter the amount as a positive integer')
   })
 
-  
-
+  test('you can not withdraw a negative value', () => {
+    expect(() => {
+      account.withdraw(-10)
+    }).toThrow('Please re-enter the amount as a positive integer')
+  })
 })
+
+
+
 
   test('the withdrawn amount, date and balance are passed into transactions', () => {
     account.deposit(10)

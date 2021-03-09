@@ -90,4 +90,13 @@ To view your statement => myAccount.printStatement
 To exit => cmd + c
 ```
 
+### Unhappy Paths
+- user could enter not an integer into withdraw and deposit
+```
+myAccount.deposit('ten')
+```
+- user could enter a negative integer
+```
+myAccount.deposit(-10)
+```
 
