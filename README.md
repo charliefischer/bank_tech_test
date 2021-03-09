@@ -18,6 +18,9 @@ First, clone this repo. Then:
 => user now sees further instructions of how to interact with the app
 ```
 
+## The App
+<img src='./images/Bank_App.png'>
+
 ## How to run tests
 
 In the command line, run:
@@ -26,9 +29,7 @@ npm run test
 ```
 
 You should see *100% of tests* passed with *100% coverage*.
-
-## The App
-<img src='./images/Bank_App.png'>
+<img src='./images/Bank_App_tests.png'>
 
 ## User Stories
 ```
@@ -89,7 +90,7 @@ account.transactions
 This will make it easier down the line to pull out the information for the statement
 
 ### User Interface
-The app is only designed to be used in the terminal or console.log so I'd like to add a way of hinting to users what to input so they know how to use the banking app
+The app is only designed to be used in the terminal so I'd like to add a way of hinting to users what to input so they know how to use the banking app
 ```
 Welcome to your account.
 To deposit money => myAccount.deposit(enter the amount here)
@@ -107,6 +108,10 @@ myAccount.deposit('ten')
 ```
 myAccount.deposit(-10)
 ```
+### Code Layout
+I specifically designed the code so that at the top would be all the code that the user has access to, and beneath that is all the private methods that are needed for the app to function but I do not want users to be able to access so they can't edit their balance or any transactions.
+
+I also refactored all of my classes so that they are only single responsibility to ensure that the code is as easy to read as possible, as well as removing any of my comments I added when building the code so they don't distract when reading the code. 
 
 ## What could be improved
 Next steps:

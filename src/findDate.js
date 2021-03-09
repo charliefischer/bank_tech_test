@@ -7,6 +7,8 @@ class FindDate {
     return `${this.#getDate()}/${this.#getMonth()}/${this.#getFullYear()}`
   }
 
+  // private methods
+
   #getDate(){
     return this.date.getDate()
   }
