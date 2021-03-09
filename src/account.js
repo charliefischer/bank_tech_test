@@ -1,4 +1,5 @@
 // import Transaction from './transaction'
+const Transaction = require('../src/transaction')
 
 class Account {
   constructor(){
@@ -67,16 +68,9 @@ class Account {
 
 }
 
-class Transaction {
-  constructor(type, amount, balance, date){
-    this.date = date
-    this.type = type 
-    this.amount = amount 
-    this.balance = balance
-  }
-}
+
 
 account = new Account();
 
 
-module.exports =  Account, Transaction
+module.exports =  Account

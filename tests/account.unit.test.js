@@ -2,6 +2,7 @@ const Account = require('../src/account')
 const Transaction = require('../src/account')
 // const simplifiedDate = require('./helpers')
 let account;
+let date;
 
 simplifiedDate = () => {
   let date = new Date()
@@ -10,6 +11,7 @@ simplifiedDate = () => {
 
 beforeEach(() => {
   account = new Account();
+  date = simplifiedDate();
 })
 
 describe('balance', () => {
@@ -48,20 +50,17 @@ describe('withdraw', () => {
   })
 })
 
+
+
+
 describe('transactions', () => {
   test('is an empty array initially', () => {
     expect(account.transactions).toStrictEqual([])
   })
 
-  test('the deposit amount,date and balance are passed into transactions', () => {
-    account.deposit(10)
-    expect(account.transactions).toEqual([{
-      date: simplifiedDate(),
-      type: 'credit',
-      amount: 10, 
-      balance: 10.00
-    }])
-  })
+  
+
+})
 
   test('the withdrawn amount, date and balance are passed into transactions', () => {
     account.deposit(10)
@@ -74,7 +73,6 @@ describe('transactions', () => {
       balance: 5.00
     })
   })
-})
 
 describe('printStatement', () => {
   test('returns a statement detailing the transaction', () => {
