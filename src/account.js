@@ -11,7 +11,7 @@ class Account {
   }
 
   deposit(amount) {
-    if(!Number.isInteger(amount) || amount < 0){
+    if(this.#isAmountValid(amount)){
       throw new Error('Please re-enter the amount as a positive integer')
     }
 
@@ -29,7 +29,7 @@ class Account {
   }
 
   withdraw(amount) {
-    if(!Number.isInteger(amount) || amount < 0){
+    if(this.#isAmountValid(amount)){
       throw new Error('Please re-enter the amount as a positive integer')
     }
     if (this.#isInsufficientFunds(amount)) throw new Error('Insufficient funds');
@@ -46,7 +46,7 @@ class Account {
     return this.#displayBalance()
   }
 
-  // private methods below
+  // private methods 
   
   #printAllTransactions() {
     let str = 'date || credit || debit || balance'
@@ -59,6 +59,10 @@ class Account {
     } return str
   }
 
+  #isAmountValid(amount) {
+    return (amount < 0.01 || !Number.isInteger(Math.floor(amount)))
+  }
+
   #simplifiedDate() {
     let date = new Date()
     return date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear()
@@ -68,7 +72,7 @@ class Account {
     return this.balance - amount < 0
   }
 
-  #debit(amount){
+  #debit(amount) {
     return this.balance -= amount
   }
 
@@ -76,7 +80,7 @@ class Account {
    return this.balance += amount 
   }
 
-  #displayBalance(){
+  #displayBalance() {
     return "New balance: £" + this.balance.toFixed(2)
   }
 

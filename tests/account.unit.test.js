@@ -27,6 +27,10 @@ describe('deposit', () => {
   test('you can make deposits', () => {
     expect(account.deposit(10)).toEqual('New balance: £10.00')
   })
+
+  test('you can make deposits that include pennies', () => {
+    expect(account.deposit(0.01)).toEqual('New balance: £0.01')
+  })
   
   test('you can make multiple deposits', () => {
     account.deposit(10)
