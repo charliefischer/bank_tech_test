@@ -13,7 +13,9 @@
 First, clone this repo. Then:
 ```
 > npm install
-> 
+> node
+> require('./src/account)
+=> user now sees further instructions of how to interact with the app
 ```
 
 ## How to run tests
@@ -56,16 +58,16 @@ date || credit || debit || balance
 ```
 
 ## Planning
-#### Date
+### Date
 Date should be shown as the acceptance criteria above.
 So today the date is 8th March 2021 and so should be shown as
 ```8/3/2021```
 
-#### Amount
+### Amount
 The amount deposited or withdrawn should be specified with 2 decimal places and saved as a type and amount to make printing the statements easier down the line
 ```type: 'debit', amount: 6000```
 
-#### Transactions
+### Transactions
 Transactions should produce a hash that contains the information about:
 - the date
 - whether it is credit or debit
@@ -80,7 +82,7 @@ account.transactions
 ```
 This will make it easier down the line to pull out the information for the statement
 
-#### User Interface
+### User Interface
 The app is only designed to be used in the terminal or console.log so I'd like to add a way of hinting to users what to input so they know how to use the banking app
 ```
 Welcome to your account.
@@ -100,3 +102,6 @@ myAccount.deposit('ten')
 myAccount.deposit(-10)
 ```
 
+## What could be improved
+Next steps:
+- giving this a GUI would stop any chances of the unhappy paths as if I only gave users buttons to press then they couldn't input anything that would crash the app
