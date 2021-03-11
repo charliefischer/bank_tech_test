@@ -1,4 +1,5 @@
 const Transaction = require('../src/transaction')
+const PrintStatement = require('../src/printStatement')
 
 class Account {
   constructor() {
@@ -38,29 +39,7 @@ class Account {
   }
 
   get printStatement() {
-    return this.#printAllTransactions()
-  }
-
-  #printAllTransactions() {
-    let str = 'date || credit || debit || balance'
-    for (let i = this.transactions.length - 1; i >= 0; i--) {
-      if (this.transactions[i].type === 'credit') {
-        str += '\n' + 
-        this.transactions[i].date + 
-        ' || ' + 
-        this.transactions[i].amount.toFixed(2) + 
-        ' || || ' + 
-        this.transactions[i].balance.toFixed(2)
-      } else {
-        str += '\n' + 
-        this.transactions[i].date + 
-        ' || || ' + 
-        this.transactions[i].amount.toFixed(2) + 
-        ' || ' + 
-        this.transactions[i].balance.toFixed(2)
-      }
-    }
-    return str
+    return new PrintStatement(this.transactions).statement
   }
 
   #isAmountValid(amount) {
@@ -70,6 +49,7 @@ class Account {
   #isInsufficientFunds(amount) {
     return this.balance - amount < 0
   }
+  
 
   #displayBalance() {
     return "New balance: £" + this.balance.toFixed(2)
