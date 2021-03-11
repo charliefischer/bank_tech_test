@@ -15,7 +15,10 @@ First, clone this repo. Then:
 > npm install
 > node
 > require('./src/account)
-=> user now sees further instructions of how to interact with the app
+> To deposit money => myAccount.deposit(enter the amount here)
+> To withdraw money => myAccount.deposit(enter the amount here)
+> To view your statement => myAccount.printStatement
+> To exit => cmd + c
 ```
 
 ## The App
@@ -88,16 +91,6 @@ account.transactions
 => [{date: 01/01/2000, type: credit, amount: 500, balance: 500}]
 ```
 This will make it easier down the line to pull out the information for the statement
-
-### User Interface
-The app is only designed to be used in the terminal so I'd like to add a way of hinting to users what to input so they know how to use the banking app
-```
-Welcome to your account.
-To deposit money => myAccount.deposit(enter the amount here)
-To withdraw money => myAccount.deposit(enter the amount here)
-To view your statement => myAccount.printStatement
-To exit => cmd + c
-```
 
 ### Unhappy Paths
 - user could enter not an integer into withdraw and deposit

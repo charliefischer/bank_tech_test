@@ -84,13 +84,6 @@ class Account {
   }
 }
 
-console.log(
-  `Welcome to your account.\n
-  To deposit money => myAccount.deposit(enter the amount here)\n
-  To withdraw money => myAccount.deposit(enter the amount here)\n
-  To view your statement => myAccount.printStatement\n
-  To exit => ctrl + d`
-)
 myAccount = new Account();
 
 module.exports = Account
