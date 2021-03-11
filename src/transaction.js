@@ -8,8 +8,6 @@ class Transaction {
     this.balance = balance
   }
 
-  // private methods
-
   #findDate(){
     let date = new FindDate()
     return date.format()

@@ -41,8 +41,6 @@ class Account {
     return this.#printAllTransactions()
   }
 
-  // private methods 
-
   #printAllTransactions() {
     let str = 'date || credit || debit || balance'
     for (let i = this.transactions.length - 1; i >= 0; i--) {
