@@ -1,13 +1,11 @@
 const Account = require('../src/account')
-const Transaction = require('../src/account')
-// const simplifiedDate = require('./helpers')
+
+const simplifiedDate = require('./helpers')
+
+
 let account;
 let date;
 
-simplifiedDate = () => {
-  let date = new Date()
-  return date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear()
-}
 
 beforeEach(() => {
   account = new Account();

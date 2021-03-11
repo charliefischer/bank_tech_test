@@ -49,7 +49,6 @@ class Account {
   #isInsufficientFunds(amount) {
     return this.balance - amount < 0
   }
-  
 
   #displayBalance() {
     return "New balance: £" + this.balance.toFixed(2)

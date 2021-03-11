@@ -9,3 +9,12 @@ describe('findDate', () => {
     expect(newDate.format()).toEqual(date)
   })
 })
+
+// const getCurrentDate = () => new FindDate();
+// test('It should create new date', () => {
+//   jest
+//     .spyOn(global, 'Date')
+//     .mockImplementationOnce(() => new Date('02/01/2020'));
+
+//   expect(getCurrentDate().date).toEqual(new FindDate());
+// });

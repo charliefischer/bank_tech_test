@@ -1,4 +1,3 @@
-
 class PrintStatement {
   constructor(transactions){
     this.printAllTransactions(transactions)
