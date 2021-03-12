@@ -4,7 +4,7 @@ const simplifiedDate = require('./helpers')
 let date = simplifiedDate()
 const mockDate = jest.fn(() => {
   let date = new Date('2019-05-14T11:01:58.135Z')
-  let month = date.getMonth()
+  let month = date.getMonth() + 1
   let year = date.getFullYear()
   return `${month}.${year}`
 })
@@ -29,3 +29,4 @@ test('the transactions can take a cn injected date class for alternative formatt
 
   expect(transaction.date).toEqual('4.2019')
 })
+
