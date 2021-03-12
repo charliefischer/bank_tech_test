@@ -27,24 +27,5 @@ test('the transactions can take a hardcoded date', () => {
 test('the transactions can take a cn injected date class for alternative formatting', () => {
   let transaction = new Transaction('credit', 10, 10.00, mockDate())
 
-  expect(transaction.date).toEqual('4.2019')
+  expect(transaction.date).toEqual('5.2019')
 })
-
-// test("the time is stored in a new Transaction", () => {
-//   const dateMock = Date.prototype.findDate = jest.fn();
-//   dateMock.mockReturnValue("bar");
-//   let a = new Transaction('credit', 10, 10)
-//   expect(dateMock("foo")).toBe("bar");
-//   expect(a.date).toEqual()
-//   // expect(mock).toHaveBeenCalledWith("foo");
-// });
-
-
-const getCurrentDate = () => new Date();
-test('It should create new date', () => {
-  jest
-    .spyOn(global, 'Date')
-    .mockImplementationOnce(() => new Date('2019-05-14T11:01:58.135Z'));
-
-  expect(getCurrentDate()).toEqual('2019-05-14T11:01:58.135Z');
-});
